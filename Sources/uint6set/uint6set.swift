@@ -22,39 +22,39 @@ public struct UInt6Set {
     }
 
     @inlinable
-    var count: Element { .init(bits.nonzeroBitCount) }
+    public var count: Element { .init(bits.nonzeroBitCount) }
 
     @inlinable
-    var first: Element? { isEmpty ? nil : firstInNonEmpty }
+    public var first: Element? { isEmpty ? nil : firstInNonEmpty }
 
     @inlinable
-    var firstInNonEmpty: Element { .init(bits.trailingZeroBitCount) }
+    public var firstInNonEmpty: Element { .init(bits.trailingZeroBitCount) }
 
     @inlinable
-    var last: Element? { isEmpty ? nil : lastInNonEmpty }
+    public var last: Element? { isEmpty ? nil : lastInNonEmpty }
 
     @inlinable
-    var lastInNonEmpty: Element { .init(Int(UInt6.max) - bits.leadingZeroBitCount) }
+    public var lastInNonEmpty: Element { .init(Int(UInt6.max) - bits.leadingZeroBitCount) }
 
     @inlinable
-    mutating func insert(_ value: Element) {
+    public mutating func insert(_ value: Element) {
         bits |= 1 << value
     }
 
     @inlinable
-    mutating func remove(_ value: Element) {
+    public mutating func remove(_ value: Element) {
         bits &= ~(1 << value)
     }
 
     @inlinable
-    func contains(_ value: Element) -> Bool {
+    public func contains(_ value: Element) -> Bool {
         bits & (1 << value) != 0
     }
 
     @inlinable
     public var isEmpty: Bool { bits == 0 }
 
-    static let empty: Self = .init(0)
+    public static let empty: Self = .init(0)
 }
 
 extension UInt6Set {
