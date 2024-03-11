@@ -63,7 +63,7 @@ extension UInt6Set {
         .init(bits & values.bits)
     }
     @inlinable
-    public func intersection(_ values: some Sequence<UInt8>) -> Self {
+    public func intersection(_ values: some Sequence<Element>) -> Self {
         intersection(.init(values))
     }
     @inlinable
